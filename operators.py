@@ -37,7 +37,7 @@ def origin_to_bottom(ob, matrix=Matrix(), use_verts=False):
 
 
 class JSWK_OT_MoveCenterToBase(bpy.types.Operator):
-    bl_idname = "pivot_to_base.move_center_to_base"
+    bl_idname = "pivot_to_base.center_to_base"
     bl_label = "Move center to base"
     bl_description = "Move current center of selected mesh to the middle of bottom vertex"
     bl_options = {'REGISTER', 'UNDO'}
@@ -47,9 +47,10 @@ class JSWK_OT_MoveCenterToBase(bpy.types.Operator):
             if o.type == 'MESH':
                 origin_to_bottom(o)
                 #origin_to_bottom(o, matrix=o.matrix_world) # global
+        return {'FINISHED'}
 
 class JSWK_OT_MoveCenterToBaseV(bpy.types.Operator):
-    bl_idname = "pivot_to_base.move_center_to_base_vertices"
+    bl_idname = "pivot_to_base.center_to_base_vertices"
     bl_label = "Move center to base (use vertices)"
     bl_description = "Move current center of selected mesh to the middle of bottom vertices"
     bl_options = {'REGISTER', 'UNDO'}
@@ -58,6 +59,10 @@ class JSWK_OT_MoveCenterToBaseV(bpy.types.Operator):
         for o in context.selected_objects:
             if o.type == 'MESH':
                 origin_to_bottom(o, use_verts=True)
+        return {'FINISHED'}
 
 
-
+classes = (
+            JSWK_OT_MoveCenterToBase,
+            JSWK_OT_MoveCenterToBaseV,
+           )
