@@ -46,7 +46,7 @@ def register():
 
 
 def unregister():
-    del bpy.types.Scene.pivot_to_base
+    # del bpy.types.Scene.pivot_to_base
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
 
