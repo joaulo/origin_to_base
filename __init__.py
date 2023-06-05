@@ -26,7 +26,7 @@ bl_info = {
     "author" : "joaulo <jsoftworks@joaulo.com>",
     "description" : "Move mesh center to the middle of bottom vertices",
     "blender" : (2, 80, 0),
-    "version" : (1, 0, 0),
+    "version" : (1, 0, 1),
     "location" : "",
     "category" : "Mesh"
     # "warning": "",  # used for warning icon and text in addons panel
@@ -46,7 +46,7 @@ def register():
 
 
 def unregister():
-    del bpy.types.Scene.pivot_to_base
+    # del bpy.types.Scene.pivot_to_base
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
 
