@@ -22,15 +22,15 @@ from bpy.props import PointerProperty
 
 
 bl_info = {
-    "name" : "pivot_to_base",
+    "name" : "origin_to_base",
     "author" : "joaulo <jsoftworks@joaulo.com>",
-    "description" : "Move mesh center to the middle of bottom vertices",
+    "description" : "Move mesh origin to the center bottom",
     "blender" : (2, 80, 0),
-    "version" : (1, 0, 1),
+    "version" : (1, 1, 0),
     "location" : "",
-    "category" : "Mesh"
+    "category" : "Mesh",
     # "warning": "",  # used for warning icon and text in addons panel
-    # "doc_url": "https://",
+    "doc_url" : "https://github.com/joaulo/pivot_to_base",
     # "tracker_url": "",
 }
 

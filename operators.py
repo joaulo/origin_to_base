@@ -36,12 +36,16 @@ def origin_to_bottom(ob, matrix=Matrix(), use_verts=False):
     mw.translation = mw @ o
 
 
-class JSWK_OT_MoveCenterToBase(bpy.types.Operator):
-    bl_idname = "pivot_to_base.center_to_base"
-    bl_label = "Move center to base"
-    bl_description = "Move current center of selected mesh to the middle of bottom vertex"
+class JSWK_OT_SetOriginToVolumeBase(bpy.types.Operator):
+    bl_idname = "origin_to_base.origin_to_base_volume"
+    bl_label = "Move object origin to base (volume base)"
+    bl_description = "Move current origin of selected mesh to the middle x,y and lower z of the surrounding volume"
     bl_options = {'REGISTER', 'UNDO'}
-        
+    
+    @classmethod
+    def poll(cls, context):
+        return bool(context.selected_objects)
+    
     def execute(self, context):
         for o in context.selected_objects:
             if o.type == 'MESH':
@@ -49,12 +53,16 @@ class JSWK_OT_MoveCenterToBase(bpy.types.Operator):
                 #origin_to_bottom(o, matrix=o.matrix_world) # global
         return {'FINISHED'}
 
-class JSWK_OT_MoveCenterToBaseV(bpy.types.Operator):
-    bl_idname = "pivot_to_base.center_to_base_vertices"
-    bl_label = "Move center to base (use vertices)"
-    bl_description = "Move current center of selected mesh to the middle of bottom vertices"
+class JSWK_OT_SetOriginToBaseVerts(bpy.types.Operator):
+    bl_idname = "origin_to_base.origin_to_base_vertices"
+    bl_label = "Move mesh origin to base (base vertices)"
+    bl_description = "Move current origin of selected mesh to the middle of bottom vertices"
     bl_options = {'REGISTER', 'UNDO'}
-        
+    
+    @classmethod
+    def poll(cls, context):
+        return bool(context.selected_objects)
+    
     def execute(self, context):
         for o in context.selected_objects:
             if o.type == 'MESH':
@@ -63,6 +71,6 @@ class JSWK_OT_MoveCenterToBaseV(bpy.types.Operator):
 
 
 classes = (
-            JSWK_OT_MoveCenterToBase,
-            JSWK_OT_MoveCenterToBaseV,
+            JSWK_OT_SetOriginToVolumeBase,
+            JSWK_OT_SetOriginToBaseVerts,
            )
