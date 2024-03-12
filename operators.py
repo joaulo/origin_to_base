@@ -37,7 +37,7 @@ def origin_to_bottom(ob, matrix=Matrix(), use_verts=False):
 
 
 class JSWK_OT_SetOriginToVolumeBase(bpy.types.Operator):
-    bl_idname = "pivot_to_base.origin_to_base"
+    bl_idname = "origin_to_base.origin_to_base"
     bl_label = "Move object origin to base (volume base)"
     bl_description = "Move current origin of selected mesh to the middle x,y and lower z of the surrounding volume"
     bl_options = {'REGISTER', 'UNDO'}
@@ -54,7 +54,7 @@ class JSWK_OT_SetOriginToVolumeBase(bpy.types.Operator):
         return {'FINISHED'}
 
 class JSWK_OT_SetOriginToBaseVerts(bpy.types.Operator):
-    bl_idname = "pivot_to_base.origin_to_base_vertices"
+    bl_idname = "origin_to_base.origin_to_base_vertices"
     bl_label = "Move mesh origin to base (base vertices)"
     bl_description = "Move current origin of selected mesh to the middle of bottom vertices"
     bl_options = {'REGISTER', 'UNDO'}
