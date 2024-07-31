@@ -20,7 +20,7 @@ bl_info = {
     "author" : "joaulo <jsoftworks@joaulo.com>",
     "description" : "Move mesh origin to the center bottom",
     "blender" : (2, 80, 0),
-    "version" : (1, 1, 0),
+    "version" : (1, 2, 0),
     "location" : "",
     "category" : "Mesh",
     # "warning": "",  # used for warning icon and text in addons panel
