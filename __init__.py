@@ -11,22 +11,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-from . import (
-    operators,
-    # panels,
-    # properties,
-)
 
+from . import operators, panels, menus
 import bpy
-from bpy.props import PointerProperty
-
 
 bl_info = {
     "name" : "origin_to_base",
     "author" : "joaulo <jsoftworks@joaulo.com>",
     "description" : "Move mesh origin to the center bottom",
     "blender" : (2, 80, 0),
-    "version" : (1, 1, 0),
+    "version" : (1, 2, 0),
     "location" : "",
     "category" : "Mesh",
     # "warning": "",  # used for warning icon and text in addons panel
@@ -34,22 +28,17 @@ bl_info = {
     # "tracker_url": "",
 }
 
-# classes = properties.classes + operators.classes + panels.classes
-classes = operators.classes
-
+classes = operators.classes + panels.classes
 
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
-    # bpy.types.Scene.pivot_to_base = PointerProperty(
-    #     type=properties.PivotToBaseProperties)
-
+    menus.register()
 
 def unregister():
-    # del bpy.types.Scene.pivot_to_base
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
-
+    menus.unregister()
 
 if __name__ == "__main__":
     register()
