@@ -35,16 +35,16 @@ def origin_to_bottom(ob, matrix=Matrix(), use_verts=False):
 
     mw.translation = mw @ o
 
-
 class JSWK_OT_SetOriginToVolumeBase(bpy.types.Operator):
-    bl_idname = "origin_to_base.origin_to_base_volume"
+    bl_idname = "object.origin_to_base_volume"
     bl_label = "Move object origin to base (volume base)"
     bl_description = "Move current origin of selected mesh to the middle x,y and lower z of the surrounding volume"
     bl_options = {'REGISTER', 'UNDO'}
+    bl_space_type = 'VIEW_3D'
     
     @classmethod
     def poll(cls, context):
-        return bool(context.selected_objects)
+        return context.space_data.type == 'VIEW_3D' and bool(context.selected_objects) and any(o.type == 'MESH' for o in context.selected_objects)
     
     def execute(self, context):
         for o in context.selected_objects:
@@ -54,14 +54,15 @@ class JSWK_OT_SetOriginToVolumeBase(bpy.types.Operator):
         return {'FINISHED'}
 
 class JSWK_OT_SetOriginToBaseVerts(bpy.types.Operator):
-    bl_idname = "origin_to_base.origin_to_base_vertices"
-    bl_label = "Move mesh origin to base (base vertices)"
+    bl_idname = "object.origin_to_base_vertices"
+    bl_label = "Move object origin to base (base vertices)"
     bl_description = "Move current origin of selected mesh to the middle of bottom vertices"
     bl_options = {'REGISTER', 'UNDO'}
+    bl_space_type = 'VIEW_3D'
     
     @classmethod
     def poll(cls, context):
-        return bool(context.selected_objects)
+        return context.space_data.type == 'VIEW_3D' and bool(context.selected_objects) and any(o.type == 'MESH' for o in context.selected_objects)
     
     def execute(self, context):
         for o in context.selected_objects:
